@@ -83,3 +83,13 @@ app.get("/api/signout", (req, res) => {
     res.redirect("http://localhost:3000/register");
   });
 });
+
+app.get("/api/tasks/:user", async (req, res) => {
+  let userId = req.params.user;
+  await db
+    .collection("post")
+    .find({ writer: new ObjectId(userId) })
+    .toArray((err, result) => {
+      res.send(result);
+    });
+});
