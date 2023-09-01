@@ -72,51 +72,52 @@ function Tasks({ tasks, setTasks }) {
   return (
     <div>
       <Link to="/write">Add the task</Link>
-
-      {tasks.map((a, i) => {
-        return (
-          <div className={"Tasklist"} key={i}>
-            <div className="left-items">
-              <div className={a.completed ? "strikeThrough" : ""}>
-                <h4>{a.title}</h4>
-                <p> {a.content}</p>
-                <div style={{ fontSize: "12px" }}> {a.created_at}</div>
+      <div className="ListBox">
+        {tasks.map((a, i) => {
+          return (
+            <div className={"Tasklist"} key={i}>
+              <div className="left-items">
+                <div className={a.completed ? "strikeThrough" : ""}>
+                  <h4>{a.title}</h4>
+                  <p> {a.content}</p>
+                  <div style={{ fontSize: "12px" }}> {a.created_at}</div>
+                </div>
               </div>
+              <div className="right-items">
+                <button
+                  variant="dark"
+                  onClick={() => {
+                    setNum(i);
+                    setEditModal(true);
+                    console.log(editModal + " edit button");
+                    console.log(num);
+                  }}
+                >
+                  edit
+                </button>
+                <button
+                  variant="success"
+                  onClick={() => {
+                    completeTask(tasks[i]._id, tasks[i].completed);
+                  }}
+                >
+                  complete
+                </button>
+                <button
+                  variant="danger"
+                  onClick={() => {
+                    setNum(i);
+                    setDeleteModal(true);
+                    console.log(deleteModal + " delete button");
+                  }}
+                >
+                  delete
+                </button>
+              </div>{" "}
             </div>
-            <div className="right-items">
-              <button
-                variant="dark"
-                onClick={() => {
-                  setNum(i);
-                  setEditModal(true);
-                  console.log(editModal + " edit button");
-                  console.log(num);
-                }}
-              >
-                edit
-              </button>
-              <button
-                variant="success"
-                onClick={() => {
-                  completeTask(tasks[i]._id, tasks[i].completed);
-                }}
-              >
-                complete
-              </button>
-              <button
-                variant="danger"
-                onClick={() => {
-                  setNum(i);
-                  setDeleteModal(true);
-                  console.log(deleteModal + " delete button");
-                }}
-              >
-                delete
-              </button>
-            </div>{" "}
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
 
       {editModal && (
         <EditModal
@@ -127,7 +128,18 @@ function Tasks({ tasks, setTasks }) {
         ></EditModal>
       )}
 
-      {/* {deleteModal && (
+      {deleteModal && (
+        <Modal show={deleteModal} onHide={deleteCancle}>
+          <DeleteModal
+            msg={tasks[num].title}
+            onClickCancle={deleteCancle}
+            onClickConfirm={() => {
+              deleteConfirm(tasks[num]._id);
+            }}
+          ></DeleteModal>
+        </Modal>
+      )}
+      {/* <Modal show={deleteModal} onHide={deleteCancle}>
         <DeleteModal
           msg={tasks[num].title}
           onClickCancle={deleteCancle}
@@ -135,16 +147,7 @@ function Tasks({ tasks, setTasks }) {
             deleteConfirm(tasks[num]._id);
           }}
         ></DeleteModal>
-      )} */}
-      <Modal show={deleteModal} onHide={deleteCancle}>
-        <DeleteModal
-          msg={tasks[num].title}
-          onClickCancle={deleteCancle}
-          onClickConfirm={() => {
-            deleteConfirm(tasks[num]._id);
-          }}
-        ></DeleteModal>
-      </Modal>
+      </Modal> */}
     </div>
   );
 }

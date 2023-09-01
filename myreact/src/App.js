@@ -44,24 +44,3 @@ function App() {
 }
 
 export default App;
-
-function Timer() {
-  const [timer, setTimer] = useState("");
-
-  const currentTimer = () => {
-    let today = new Date();
-    today = today.toLocaleString("ko-kr");
-    setTimer(today);
-  };
-
-  const startTimer = () => {
-    setInterval(currentTimer, 1000);
-  };
-  startTimer();
-
-  return (
-    <div>
-      <h4>{timer}</h4>
-    </div>
-  );
-}

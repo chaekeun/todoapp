@@ -1,19 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap");
+
 .App {
   text-align: center;
+  justify-content: center;
+  padding: 20px;
   align-items: center;
+  font-family: "IBM Plex Sans KR", sans-serif;
 }
 
 .strikeThrough {
   text-decoration: line-through;
   color: rgb(113, 113, 113);
-}
-
-.myModal {
-  z-index: 999;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 .Tasklist {
