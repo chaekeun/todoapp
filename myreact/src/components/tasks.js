@@ -127,7 +127,7 @@ function Tasks({ tasks, setTasks }) {
         ></EditModal>
       )}
 
-      {deleteModal && (
+      {/* {deleteModal && (
         <DeleteModal
           msg={tasks[num].title}
           onClickCancle={deleteCancle}
@@ -135,15 +135,16 @@ function Tasks({ tasks, setTasks }) {
             deleteConfirm(tasks[num]._id);
           }}
         ></DeleteModal>
-      )}
-
-      {/* <DeleteModal
-        msg={tasks[num].title}
-        onClickCancle={deleteCancle}
-        onClickConfirm={() => {
-          deleteConfirm(tasks[num]._id);
-        }}
-      ></DeleteModal> */}
+      )} */}
+      <Modal show={deleteModal} onHide={deleteCancle}>
+        <DeleteModal
+          msg={tasks[num].title}
+          onClickCancle={deleteCancle}
+          onClickConfirm={() => {
+            deleteConfirm(tasks[num]._id);
+          }}
+        ></DeleteModal>
+      </Modal>
     </div>
   );
 }
