@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link, Navigate, useParams } from "react-router-dom";
 import DeleteModal from "./deleteModal";
 import MyModal from "./deleteModal";
-import { Nav } from "react-bootstrap";
+import { Modal, Nav } from "react-bootstrap";
 import EditModal from "./editModal";
 
 function Tasks({ tasks, setTasks }) {
@@ -75,7 +75,7 @@ function Tasks({ tasks, setTasks }) {
 
       {tasks.map((a, i) => {
         return (
-          <div className="Tasklist" key={i}>
+          <div className={"Tasklist"} key={i}>
             <div className="left-items">
               <div className={a.completed ? "strikeThrough" : ""}>
                 <h4>{a.title}</h4>
@@ -136,6 +136,14 @@ function Tasks({ tasks, setTasks }) {
           }}
         ></DeleteModal>
       )}
+
+      {/* <DeleteModal
+        msg={tasks[num].title}
+        onClickCancle={deleteCancle}
+        onClickConfirm={() => {
+          deleteConfirm(tasks[num]._id);
+        }}
+      ></DeleteModal> */}
     </div>
   );
 }

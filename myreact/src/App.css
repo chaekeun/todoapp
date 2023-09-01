@@ -1,8 +1,35 @@
 .App {
   text-align: center;
+  align-items: center;
 }
 
 .strikeThrough {
   text-decoration: line-through;
   color: rgb(113, 113, 113);
+}
+
+.myModal {
+  z-index: 999;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.Tasklist {
+  display: flex;
+  text-align: left;
+  justify-content: space-between;
+  padding: 7px;
+  margin: 10px;
+  border-bottom: 1px solid;
+  border-color: rgba(0, 0, 0, 0.501);
+  /* background-color: rgba(73, 86, 135, 0.111); */
+  width: 70vw;
+}
+
+.edit {
+  position: absolute;
+  width: 20vw;
+  left: 1px;
 }
